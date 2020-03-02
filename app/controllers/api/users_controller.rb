@@ -1,6 +1,7 @@
 module Api
   class UsersController < ApplicationController
     #respond_to :json
+    skip_before_action :verify_authenticity_token
 
     def index
       render json: User.all
@@ -10,7 +11,7 @@ module Api
       u = User.find_or_create_by(user_params)
       u.attributes = last_seen
       if u.save
-        render json: { status: "SUCESS", message: "Saved User" }, status: :ok
+        return render json: { status: "SUCESS", message: "Saved User" }, status: :ok
       end
 
       render json: { status: "FAIL", message: u.errors }, status: :unprocessable_entity
