@@ -5,7 +5,7 @@ Date.prototype.addHours= function(h){
 }
 
 window.setInterval(draw,30000)
-
+draw()
 function draw() {
   $.get( "api/users", function( data ) {
     console.log(data)
@@ -30,7 +30,7 @@ function draw() {
       ttl = ((Date.now() - users[key]["last_seen"].getTime())/1000) - 4*60*60
       card_type = "bg-secondary"
       console.log(ttl)
-      if (ttl < 5*60) {
+      if (ttl < 10*60) {
         n_online += 1
         card_type = "bg-success" 
       }
