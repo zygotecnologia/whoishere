@@ -22,6 +22,7 @@ $.get( "api/users", function( data ) {
   for (var key in users) {
     ttl = (Date.now() - users[key]["last_seen"].getTime())/1000
     card_type = "bg-secondary"
+    console.log(ttl)
     if (ttl < 5*60) {
       n_online += 1
       card_type = "bg-primary" 
@@ -32,7 +33,7 @@ $.get( "api/users", function( data ) {
         <div class="card-body">
           <h4 class="card-title">${key.split("auth.")[1].split("-")[0]}</h4>
           <p class="card-text">
-            Ultima vez visto em: ${strftime('%d/%m %Hh%Mm', users[key]["last_seen"])} <br>
+            Ultima vez visto em: ${strftime('%d/%m %Hh%Mm', users[key]["last_seen"]).toLocaleString("en-US", {timeZone: 'America/Sao_Paulo'})} <br>
             Número de Dispositivos: ${users[key]["mac"].length}
           </p>
         </div>
