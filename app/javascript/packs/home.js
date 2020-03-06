@@ -14,9 +14,21 @@ $.get( "api/users", function( data ) {
     }
   });
 
+  var n_users = Object.keys(users).length
+  var n_devices = data.length
+  var n_online = 0
+
+  $("#users-online").html()
   for (var key in users) {
+    ttl = (Date.now() - users[key]["last_seen"].getTime())/1000
+    card_type = "bg-secondary"
+    if (ttl < 5*60) {
+      n_online += 1
+      card_type = "bg-primary" 
+    }
+    
     $("#users-online").append(
-      `<div class="card text-left col-2 mr-2 mb-2">
+      `<div class="card ${card_type} text-left col-2 mr-2 mb-2" style="max-width: 22rem;">
         <div class="card-body">
           <h4 class="card-title">${key.split("auth.")[1].split("-")[0]}</h4>
           <p class="card-text">
@@ -26,5 +38,9 @@ $.get( "api/users", function( data ) {
         </div>
       </div>`
     )
-  }   
+  }
+
+  $("#header").html(
+    `<h1>Quem está na Zygo: ${n_online}/${n_users} Usuários online </h1>`
+  )
 });
