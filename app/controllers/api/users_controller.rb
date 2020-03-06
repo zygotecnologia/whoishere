@@ -4,7 +4,7 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def index
-      render json: User.all
+      render json: User.order('last_seen DESC')
     end
 
     def create
