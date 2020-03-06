@@ -36,7 +36,7 @@ function draw() {
       }
       
       $("#users-online").append(
-        `<div class="card ${card_type} text-left col-2 mr-2 mb-2" style="max-width: 22rem;">
+        `<div class="card ${card_type} text-left col-3 mr-2 mb-2" style="max-width: 22rem;">
           <div class="card-body">
             <h4 class="card-title">${key.split("auth.")[1].split("-")[0]}</h4>
             <p class="card-text">
