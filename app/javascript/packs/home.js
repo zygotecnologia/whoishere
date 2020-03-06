@@ -5,7 +5,7 @@ $.get( "api/users", function( data ) {
   users = {}
   data.forEach(element => {
     if(element["email"] in users) {
-      users[element["email"]]["mac"].append(element["mac"])
+      users[element["email"]]["mac"].push(element["mac"])
       if(users[element["email"]]["last_seen"].getTime() < Date(element["last_seen"])) {
         users[element["email"]]["last_seen"] = new Date(element["last_seen"])
       }
