@@ -20,7 +20,7 @@ $.get( "api/users", function( data ) {
 
   $("#users-online").html()
   for (var key in users) {
-    ttl = (Date.now() - users[key]["last_seen"].getTime())/1000
+    ttl = ((Date.now() - users[key]["last_seen"].getTime())/1000) - 4*60*60
     card_type = "bg-secondary"
     console.log(ttl)
     if (ttl < 5*60) {
