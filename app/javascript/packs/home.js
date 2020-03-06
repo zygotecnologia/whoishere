@@ -33,7 +33,7 @@ $.get( "api/users", function( data ) {
         <div class="card-body">
           <h4 class="card-title">${key.split("auth.")[1].split("-")[0]}</h4>
           <p class="card-text">
-            Ultima vez visto em: ${strftime('%d/%m %Hh%Mm', users[key]["last_seen"]).toLocaleString("en-US", {timeZone: 'America/Sao_Paulo'})} <br>
+            Ultima vez visto em: ${strftime('%d/%m %Hh%Mm', new Date(users[key]["last_seen"])).toLocaleString("en-US", {timeZone: 'America/Sao_Paulo'})} <br>
             Número de Dispositivos: ${users[key]["mac"].length}
           </p>
         </div>
