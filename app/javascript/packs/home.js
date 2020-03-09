@@ -37,13 +37,13 @@ function draw() {
       
       $("#users-online").append(
         `
-        <div class="col-2 px-1 py-1">
+        <div class="col-3 px-1 py-1">
           <div class="card ${card_type} text-left" style="max-width: 22rem;">
             <div class="card-body">
               <h4 class="card-title">${key.split("auth.")[1].split("-")[0]}</h4>
               <p class="card-text">
-                Data: ${strftime('%d/%m %Hh%Mm', users[key]["last_seen"].addHours(4))} <br>
-                Nº Dispositivos: ${users[key]["mac"].length}
+                Acesso em: ${strftime('%d/%m %Hh%Mm', users[key]["last_seen"].addHours(4))} <br>
+                Nº de Dispositivos: ${users[key]["mac"].length}
               </p>
             </div>
           </div>
